@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3'
 services:
   db:
     image: mysql
@@ -7,12 +7,18 @@ services:
     environment:
       MYSQL_DATABASE: usuario
       MYSQL_USER: Romario
+      MYSQL_ROOT_PASSWORD: 1234
       MYSQL_PASSWORD: 1234
 
   word-image:
-    build: .
-    restart: always
     depends_on:
       - db
+    build: .
     ports:
-      - 8080:8080
+      - 80:80
+    restart: always
+    environment:
+      ORDPRESS_DB_USER: Romario
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_PASSWORD: 1234
+
