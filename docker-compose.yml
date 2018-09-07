@@ -16,6 +16,8 @@ services:
     build: .
     ports:
       - 80:80
+    volumes:
+      - ./wordpress:/var/www/html
     restart: always
     environment:
       ORDPRESS_DB_USER: Romario
